@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Wonderful Teacher Mehwish</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            background: linear-gradient(135deg, #0a0a2a, #1a1a4a, #2a2a6a);
+            color: white;
+            height: 100vh;
+        }
+
+        .page {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+        }
+
+        .hidden {
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(50px);
+        }
+
+        /* Enhanced Starry Background */
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 4s infinite ease-in-out;
+        }
+
+        .shooting-star {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
+            animation: shootingStar 8s infinite linear;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        @keyframes shootingStar {
+            0% {
+                transform: translateX(-100px) translateY(0) rotate(45deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            20% {
+                transform: translateX(200px) translateY(200px) rotate(45deg);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(200px) translateY(200px) rotate(45deg);
+                opacity: 0;
+            }
+        }
+
+        /* Luxury Home Page */
+        .home-content {
+            text-align: center;
+            z-index: 20;
+            animation: fadeInUp 2s ease-out;
+        }
+
+        .home-title {
+            font-size: 4rem;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 20px rgba(255,215,0,0.5);
+            background: linear-gradient(45deg, #ffd700, #ffed4e, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-family: 'Georgia', serif;
+        }
+
+        .home-subtitle {
+            font-size: 1.8rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+            max-width: 700px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            font-style: italic;
+        }
+
+        .start-btn {
+            background: linear-gradient(135deg, #d4af37, #ffd700, #fff8e1);
+            color: #1a1a2e;
+            padding: 1.5rem 3rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 
+                0 8px 32px rgba(212, 175, 55, 0.3),
+                0 0 20px rgba(255, 215, 0, 0.4),
+                inset 0 2px 4px rgba(255,255,255,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .start-btn::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+            animation: shine 3s infinite;
+        }
+
+        .start-btn:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 
+                0 12px 40px rgba(212, 175, 55, 0.5),
+                0 0 30px rgba(255, 215, 0, 0.6);
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        /* Luxury Celebration Page */
+        .celebration-bg {
+            background: linear-gradient(135deg, #8b0000, #b22222, #dc143c);
+            position: relative;
+        }
+
+        .gold-sparkles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: radial-gradient(circle, #ffd700, transparent 70%);
+            border-radius: 50%;
+            animation: sparkleFloat 4s infinite ease-in-out;
+        }
+
+        @keyframes sparkleFloat {
+            0%, 100% { 
+                transform: translateY(0) rotate(0deg) scale(1);
+                opacity: 0;
+            }
+            50% { 
+                transform: translateY(-20px) rotate(180deg) scale(1.5);
+                opacity: 1;
+            }
+        }
+
+        .cake-container {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            perspective: 1200px;
+            margin-bottom: 4rem;
+            z-index: 15;
+        }
+
+        .cake {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            animation: luxuryFloat 4s ease-in-out infinite;
+            cursor: pointer;
+        }
+
+        @keyframes luxuryFloat {
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg) scale(1);
+            }
+            33% { 
+                transform: translateY(-15px) rotate(2deg) scale(1.02);
+            }
+            66% { 
+                transform: translateY(-8px) rotate(-2deg) scale(1.01);
+            }
+        }
+
+        .cake-layer {
+            position: absolute;
+            border-radius: 20px;
+            transform-style: preserve-3d;
+            box-shadow: 
+                0 8px 32px rgba(0,0,0,0.3),
+                0 0 15px rgba(255,255,255,0.1);
+            transition: all 0.5s ease;
+        }
+
+        .layer-1 {
+            width: 280px;
+            height: 80px;
+            background: linear-gradient(135deg, #ff8fab, #ff6b9d);
+            bottom: 0;
+            left: 60px;
+            border: 3px solid #ffd700;
+        }
+
+        .layer-2 {
+            width: 220px;
+            height: 80px;
+            background: linear-gradient(135deg, #ff6b9d, #ff4f91);
+            bottom: 80px;
+            left: 90px;
+            border: 3px solid #ffd700;
+        }
+
+        .layer-3 {
+            width: 160px;
+            height: 80px;
+            background: linear-gradient(135deg, #ff4f91, #dc143c);
+            bottom: 160px;
+            left: 120px;
+            border: 3px solid #ffd700;
+        }
+
+        .candle {
+            position: absolute;
+            width: 15px;
+            height: 60px;
+            background: linear-gradient(to bottom, #ffff00, #ffd700);
+            bottom: 240px;
+            left: 192px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(255,215,0,0.5);
+        }
+
+        .flame {
+            position: absolute;
+            width: 25px;
+            height: 40px;
+            background: radial-gradient(ellipse, #ff6b00, #ffd700 40%, transparent 70%);
+            border-radius: 50% 50% 20% 20%;
+            bottom: 300px;
+            left: 187px;
+            opacity: 0;
+            transition: all 0.8s ease;
+            animation: luxuryFlicker 1.2s infinite alternate;
+            filter: blur(1px);
+        }
+
+        .flame.lit {
+            opacity: 1;
+        }
+
+        @keyframes luxuryFlicker {
+            0% { 
+                transform: scale(1) rotate(-2deg);
+                filter: blur(1px);
+            }
+            100% { 
+                transform: scale(1.2) rotate(2deg);
+                filter: blur(2px);
+            }
+        }
+
+        .balloons {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .balloon {
+            position: absolute;
+            width: 40px;
+            height: 55px;
+            border-radius: 50% 50% 50% 50%;
+            animation: luxuryFloatBalloon 8s infinite ease-in-out;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .balloon::after {
+            content: '';
+            position: absolute;
+            width: 3px;
+            height: 40px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.8), transparent);
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        @keyframes luxuryFloatBalloon {
+            0%, 100% { 
+                transform: translateY(0) rotate(0deg) scale(1);
+            }
+            25% { 
+                transform: translateY(-30px) rotate(5deg) scale(1.05);
+            }
+            50% { 
+                transform: translateY(-60px) rotate(-3deg) scale(1.1);
+            }
+            75% { 
+                transform: translateY(-30px) rotate(3deg) scale(1.05);
+            }
+        }
+
+        .floating-hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 24px;
+            color: #ff6b6b;
+            animation: floatHeart 6s infinite ease-in-out;
+            text-shadow: 0 0 10px rgba(255,107,107,0.8);
+        }
+
+        @keyframes floatHeart {
+            0%, 100% { 
+                transform: translateY(0) rotate(0deg) scale(1);
+                opacity: 0;
+            }
+            50% { 
+                transform: translateY(-40px) rotate(180deg) scale(1.3);
+                opacity: 1;
+            }
+        }
+
+        .next-btn {
+            background: linear-gradient(135deg, #d4af37, #ffd700);
+            color: #1a1a2e;
+            padding: 1.5rem 3rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            position: absolute;
+            bottom: 60px;
+            box-shadow: 
+                0 8px 32px rgba(212, 175, 55, 0.4),
+                0 0 20px rgba(255, 215, 0, 0.5);
+            transition: all 0.4s ease;
+            z-index: 20;
+        }
+
+        .next-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 
+                0 12px 40px rgba(212, 175, 55, 0.6),
+                0 0 30px rgba(255, 215, 0, 0.7);
+        }
+
+        <!-- Luxury Appreciation Page -->
+    <div id="appreciationPage" class="page appreciation-bg hidden">
+        <div class="stars"></div>
+        <div class="gold-sparkles"></div>
+        <div class="shooting-stars"></div>
+        
+        <div class="message-card">
+            <h2 class="message-title">Dearest Teacher Mehwish</h2>
+            <div class="message-text">
+                <p>Miss Mehwish, your teaching is like a guiding star,</p>
+                <p>Always bright, always inspiring, always near and never far.</p>
+                <p>You didn’t just teach lessons from a book,</p>
+                <p>You gave us courage, strength, and a brand new outlook.</p>
+                <p>Every word of yours is a treasure I’ll keep,</p>
+                <p>In my heart forever, so strong and deep.</p>
+                <p>This little website is my way to say,</p>
+                <p>You’re my mentor, my guide, in every way.</p>
+            </div>
+            
+            <h3 class="signature">From your student, <span class="highlight">Mehwish</span></h3>
+        </div>
+    </div>
+
+        .message-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        .message-title {
+            font-size: 3rem;
+            font-weight: 300;
+            margin-bottom: 2.5rem;
+            background: linear-gradient(45deg, #ffd700, #ffed4e, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-family: 'Georgia', serif;
+            text-shadow: 0 0 20px rgba(255,215,0,0.3);
+        }
+
+        .message-text {
+            font-size: 1.4rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            opacity: 0.95;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .highlight {
+            font-weight: 600;
+            font-size: 1.6rem;
+            margin-top: 2rem;
+            color: #ffd700;
+            text-shadow: 0 0 15px rgba(255,215,0,0.5);
+            font-style: italic;
+        }
+
+        .crystal-decoration {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(212, 175, 55, 0.5);
+            animation: rotateCrystal 20s infinite linear;
+            border-radius: 20px;
+            transform-style: preserve-3d;
+        }
+
+        .crystal-1 {
+            top: 20%;
+            left: 15%;
+            animation-delay: 0s;
+        }
+
+        .crystal-2 {
+            bottom: 20%;
+            right: 15%;
+            animation-delay: -10s;
+        }
+
+        @keyframes rotateCrystal {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.1); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(80px) rotate(5deg);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) rotate(0);
+            }
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .home-title {
+                font-size: 2.8rem;
+            }
+            
+            .home-subtitle {
+                font-size: 1.4rem;
+                padding: 0 1.5rem;
+            }
+            
+            .cake-container {
+                transform: scale(0.7);
+            }
+            
+            .message-card {
+                margin: 0 2rem;
+                padding: 2rem;
+            }
+            
+            .message-title {
+                font-size: 2.2rem;
+            }
+            
+            .message-text {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Luxury Home Page -->
+    <div id="homePage" class="page">
+        <div class="stars" id="stars"></div>
+        <div class="gold-sparkles" id="goldSparkles"></div>
+        <div class="shooting-stars" id="shootingStars"></div>
+        <div class="home-content">
+            <h1 class="home-title">For My Wonderful Teacher Mehwish</h1>
+            <p class="home-subtitle">A magnificent tribute to honor your extraordinary teaching and guidance</p>
+            <button class="start-btn" onclick="startPresentation()">Let's Begin This Celebration</button>
+        </div>
+    </div>
+
+    <!-- Luxury Celebration Page -->
+    <div id="celebrationPage" class="page celebration-bg hidden">
+        <div class="stars"></div>
+        <div class="gold-sparkles" id="celebrationSparkles"></div>
+        <div class="balloons" id="balloons"></div>
+        <div class="floating-hearts" id="floatingHearts"></div>
+        
+        <div class="cake-container">
+            <div class="cake" onclick="lightCandle()">
+                <div class="cake-layer layer-1"></div>
+                <div class="cake-layer layer-2"></div>
+                <div class="cake-layer layer-3"></div>
+                <div class="candle"></div>
+                <div class="flame" id="flame"></div>
+            </div>
+        </div>
+        
+        <button class="next-btn" onclick="nextPage()">Continue the Journey</button>
+        
+        <div class="crystal-decoration crystal-1"></div>
+        <div class="crystal-decoration crystal-2"></div>
+    </div>
+
+    <!-- Luxury Appreciation Page -->
+    <div id="appreciationPage" class="page appreciation-bg hidden">
+        <div class="stars"></div>
+        <div class="gold-sparkles"></div>
+        <div class="shooting-stars"></div>
+        
+        <div class="message-card">
+            <h2 class="message-title">Dearest Teacher Mehwish</h2>
+            <div class="message-text">
+                <p>Your teaching illuminates our minds like golden sunbeams,</p>
+                <p>Guiding us through knowledge with your wisdom and dreams.</p>
+                <p>Each lesson is a precious gem, carefully crafted with care,</p>
+                <p>Making learning an adventure beyond compare.</p>
+                
+                <p>Your patience and dedication shine like polished gold,</p>
+                <p>A treasure more valuable than stories often told.</p>
+            </div>
+            <p class="highlight">Thank you for being the most extraordinary teacher!</p>
+        </div>
+        
+        <div class="crystal-decoration crystal-1"></div>
+        <div class="crystal-decoration crystal-2"></div>
+        <div class="floating-hearts" id="finalHearts"></div>
+    </div>
+
+    <script>
+        // Create enhanced stars with different sizes
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            for (let i = 0; i < 300; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                const size = Math.random() * 4 + 1;
+                star.style.width = size + 'px';
+                star.style.height = size + 'px';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 4 + 's';
+                star.style.opacity = Math.random() * 0.8 + 0.2;
+                starsContainer.appendChild(star);
+            }
+        }
+
+        // Create shooting stars
+        function createShootingStars() {
+            const container = document.getElementById('shootingStars');
+            for (let i = 0; i < 5; i++) {
+                const star = document.createElement('div');
+                star.className = 'shooting-star';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.width = Math.random() * 100 + 50 + 'px';
+                star.style.animationDelay = Math.random() * 8 + 's';
+                container.appendChild(star);
+            }
+        }
+
+        // Create gold sparkles
+        function createGoldSparkles() {
+            const containers = [
+                document.getElementById('goldSparkles'),
+                document.getElementById('celebrationSparkles')
+            ];
+            
+            containers.forEach(container => {
+                for (let i = 0; i < 50; i++) {
+                    const sparkle = document.createElement('div');
+                    sparkle.className = 'sparkle';
+                    sparkle.style.left = Math.random() * 100 + '%';
+                    sparkle.style.top = Math.random() * 100 + '%';
+                    sparkle.style.animationDelay = Math.random() * 4 + 's';
+                    sparkle.style.animationDuration = (Math.random() * 2 + 3) + 's';
+                    container.appendChild(sparkle);
+                }
+            });
+        }
+
+        // Create luxury balloons
+        function createBalloons() {
+            const balloonsContainer = document.getElementById('balloons');
+            const colors = [
+                '#ff6b6b', '#4ecdc4', '#45b7d1', '#f9ca24', '#e056fd', 
+                '#ff9ff3', '#feca57', '#ff9f43', '#54a0ff', '#5f27cd'
+            ];
+            
+            for (let i = 0; i < 25; i++) {
+                const balloon = document.createElement('div');
+                balloon.className = 'balloon';
+                balloon.style.background = colors[Math.floor(Math.random() * colors.length)];
+                balloon.style.left = Math.random() * 100 + '%';
+                balloon.style.top = Math.random() * 100 + '%';
+                balloon.style.animationDelay = Math.random() * 8 + 's';
+                balloon.style.animationDuration = (Math.random() * 4 + 6) + 's';
+                balloon.style.transform = `scale(${Math.random() * 0.6 + 0.8})`;
+                balloonsContainer.appendChild(balloon);
+            }
+        }
+
+        // Create floating hearts
+        function createFloatingHearts() {
+            const containers = [
+                document.getElementById('floatingHearts'),
+                document.getElementById('finalHearts')
+            ];
+            
+            const heartSymbols = ['❤️', '💖', '💕', '💗', '💓', '💞'];
+            
+            containers.forEach(container => {
+                for (let i = 0; i < 20; i++) {
+                    const heart = document.createElement('div');
+                    heart.className = 'heart';
+                    heart.textContent = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+                    heart.style.left = Math.random() * 100 + '%';
+                    heart.style.top = Math.random() * 100 + '%';
+                    heart.style.animationDelay = Math.random() * 6 + 's';
+                    heart.style.animationDuration = (Math.random() * 4 + 4) + 's';
+                    heart.style.fontSize = (Math.random() * 20 + 16) + 'px';
+                    container.appendChild(heart);
+                }
+            });
+        }
+
+        // Page navigation functions
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.add('hidden');
+            });
+            const targetPage = document.getElementById(pageId);
+            targetPage.classList.remove('hidden');
+            
+            // Add subtle scale animation when showing page
+            targetPage.style.transform = 'scale(1.02)';
+            setTimeout(() => {
+                targetPage.style.transform = 'scale(1)';
+            }, 50);
+        }
+
+        function startPresentation() {
+            showPage('celebrationPage');
+            // Add celebration sound effect (pseudo-code)
+            playCelebrationSound();
+        }
+
+        function lightCandle() {
+            const flame = document.getElementById('flame');
+            flame.classList.add('lit');
+            
+            // Add additional sparkles when candle is lit
+            for (let i = 0; i < 10; i++) {
+                createExtraSparkle();
+            }
+            
+            // Play sparkle sound effect (pseudo-code)
+            playSparkleSound();
+        }
+
+        function createExtraSparkle() {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.style.left = Math.random() * 300 + 50 + 'px';
+            sparkle.style.top = Math.random() * 300 + 100 + 'px';
+            sparkle.style.animation = 'sparkleFloat 2s ease-in-out';
+            document.getElementById('celebrationSparkles').appendChild(sparkle);
+            
+            setTimeout(() => {
+                sparkle.remove();
+            }, 2000);
+        }
+
+        function nextPage() {
+            showPage('appreciationPage');
+            // Add transition sound effect (pseudo-code)
+            playTransitionSound();
+        }
+
+        // Sound effect functions (placeholder)
+        function playCelebrationSound() {
+            // Would play a celebration fanfare
+            console.log("🎵 Celebration music playing");
+        }
+
+        function playSparkleSound() {
+            // Would play a sparkling sound
+            console.log("✨ Sparkle sound effect");
+        }
+
+        function playTransitionSound() {
+            // Would play a transition sound
+            console.log("🎶 Transition sound");
+        }
+
+        // Initialize the luxury presentation
+        window.onload = function() {
+            createStars();
+            createShootingStars();
+            createGoldSparkles();
+            createBalloons();
+            createFloatingHearts();
+            showPage('homePage');
+        };
+    </script>
+</body>
+</html>
